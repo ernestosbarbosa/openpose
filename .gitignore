@@ -138,3 +138,11 @@ html/
 
 ######################### Validation Scripts & Testing #########################
 output*/
+
+charts/node_modules
+charts/package-lock.json
+
+nodejs/node_modules
+
+.vscode*
+**/*.deb
