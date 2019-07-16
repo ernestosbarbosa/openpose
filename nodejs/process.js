@@ -61,7 +61,7 @@ var keypointsBody25 = {
     }
 }
 
-// amqp.connect('amqp://35.230.88.45', function (err, conn) {
+// amqp.connect('amqp://35.247.63.73', function (err, conn) {
 amqp.connect('amqp://localhost', function (err, conn) {
     conn.createChannel(function (err, ch) {
         var q = 'process';
@@ -117,7 +117,6 @@ async function processFile(fileName) {
 }
 
 
-///avaliar essa função pois não esta pegando os pontos anteriores
 function verifyAndReturnPoint(data, idQuadro, idPessoa, idPonto) {
     if (
         (data != undefined && data[idQuadro] != undefined && data[idQuadro][idPessoa] != undefined && data[idQuadro][idPessoa][idPonto] != undefined && data[idQuadro][idPessoa][idPonto][0] != undefined && data[idQuadro][idPessoa][idPonto][0] === 0) &&
@@ -125,21 +124,14 @@ function verifyAndReturnPoint(data, idQuadro, idPessoa, idPonto) {
         (data != undefined && data[idQuadro] != undefined && data[idQuadro][idPessoa] != undefined && data[idQuadro][idPessoa][idPonto] != undefined && data[idQuadro][idPessoa][idPonto][2] != undefined && data[idQuadro][idPessoa][idPonto][2] === 0) &&
         idQuadro > 0
     ) {
-        // console.log('entrou')
-        // console.log(idQuadro)
-        // console.log(idPessoa)
-        // console.log(idPonto)
-        // console.log(data[idQuadro][idPessoa][idPonto])
         return verifyAndReturnPoint(data, idQuadro - 1, idPessoa, idPonto);
     } else if (
         (data != undefined && data[idQuadro] != undefined && data[idQuadro][idPessoa] != undefined && data[idQuadro][idPessoa][idPonto] != undefined && data[idQuadro][idPessoa][idPonto][0] != undefined && data[idQuadro][idPessoa][idPonto][0] > 0) ||
         (data != undefined && data[idQuadro] != undefined && data[idQuadro][idPessoa] != undefined && data[idQuadro][idPessoa][idPonto] != undefined && data[idQuadro][idPessoa][idPonto][1] != undefined && data[idQuadro][idPessoa][idPonto][1] > 0) ||
         (data != undefined && data[idQuadro] != undefined && data[idQuadro][idPessoa] != undefined && data[idQuadro][idPessoa][idPonto] != undefined && data[idQuadro][idPessoa][idPonto][2] != undefined && data[idQuadro][idPessoa][idPonto][2] > 0)
     ) {
-        // console.log('entrou 2')
         return data[idQuadro][idPessoa][idPonto];
     } else {
-        // console.log('entrou 3')
         return [0, 0, 0];
     }
 }

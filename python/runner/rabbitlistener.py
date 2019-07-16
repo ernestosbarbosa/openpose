@@ -28,7 +28,7 @@ completed_dir = "/home/ernesto/Documentos/completed/"
 openpose = OpenPose(params)
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-#connection = pika.BlockingConnection(pika.ConnectionParameters(host='35.230.88.45'))
+# connection = pika.BlockingConnection(pika.ConnectionParameters(host='35.247.63.73'))
 channel = connection.channel()
 
 channel.queue_declare(queue='start')
